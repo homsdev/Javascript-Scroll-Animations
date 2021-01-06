@@ -48,3 +48,35 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+/* Animations */
+[data-ani] {
+  transition-duration: 2s;
+  transition-delay: 200ms;
+}
+
+[data-ani^="fade"] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-ani^="fade"].ani-scroll {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+[data-ani="fade-up"] {
+  transform: translate3d(0, 100px, 0);
+}
+
+[data-ani="fade-down"] {
+  transform: translate3d(0, -100px, 0);
+}
+
+[data-ani="fade-right"] {
+  transform: translate3d(-100px, 0, 0);
+}
+
+[data-ani="fade-left"] {
+  transform: translate3d(100px, 0, 0);
+}

@@ -1,5 +1,10 @@
+const boxes= document.querySelectorAll('.box');
+const boxy=document.querySelector('.box');
 
-const row = document.querySelector('.row');
+boxy.classList.add("ani")
+boxy.classList.remove()
+boxy.style.transform="translate3d(0,0,0)"
+
 
 const options={
         root: null,
@@ -7,19 +12,31 @@ const options={
         threshold: 0.7
 };
 
-function scrollELement(element,swapClass,options){
+function scrollELement(element,animation,options){
     
     const internalCallback = function( entries) {
         let observedElement = entries[0];
-    
-        observedElement.isIntersecting ? 
-        element.classList.toggle(swapClass): element.classList.toggle(swapClass); 
+        
+        if(observedElement.isIntersecting){
+            element.classList.add("ani-scroll");
+        }else{
+            element.classList.remove("ani-scroll");
+        }
     };
+
     const observer = new IntersectionObserver( internalCallback, options );
     observer.observe(element);
 }
 
-scrollELement(row,'active',options);
+boxes.forEach(box=>{
+    scrollELement(box,"",options);
+})
+
+const title= document.getElementById("title");
+scrollELement(title,"",options);
+
+
+
 
 
 
