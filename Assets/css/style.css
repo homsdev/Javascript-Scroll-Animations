@@ -49,11 +49,21 @@ html {
   justify-content: center;
 }
 
+.box p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box p span {
+  color: #ff4000;
+}
+
 /* Animations */
 [data-ani] {
   transition-duration: 2s;
-  transition-delay: 200ms;
-  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1.4);
+  transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 [data-ani^="fade"] {
@@ -61,7 +71,7 @@ html {
   transition-property: opacity, transform;
 }
 
-[data-ani^="fade"].ani-scroll {
+[data-ani^="fade"].min-ani-scroll {
   opacity: 1;
   transform: translateZ(0);
 }
@@ -80,4 +90,90 @@ html {
 
 [data-ani="fade-left"] {
   transform: translate3d(100px, 0, 0);
+}
+
+[data-ani^="zoom"] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-ani^="zoom"].min-ani-scroll {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+}
+
+[data-ani="zoom-in"] {
+  transform: scale(0.6);
+}
+
+[data-ani="zoom-in-up"] {
+  transform: translate3d(0, 100px, 0) scale(0.6);
+}
+
+[data-ani="zoom-in-down"] {
+  transform: translate3d(0, -100px, 0) scale(0.6);
+}
+
+[data-ani="zoom-in-right"] {
+  transform: translate3d(-100px, 0, 0) scale(0.6);
+}
+
+[data-ani="zoom-in-left"] {
+  transform: translate3d(100px, 0, 0) scale(0.6);
+}
+
+[data-ani="zoom-out"] {
+  transform: scale(1.2);
+}
+
+[data-ani="zoom-out-up"] {
+  transform: scale(1.2) translate3d(0, 100px, 0);
+}
+
+[data-ani="zoom-out-down"] {
+  transform: scale(1.2) translate3d(0, -100px, 0);
+}
+
+[data-ani="zoom-out-right"] {
+  transform: scale(1.2) translate3d(-100px, 0, 0);
+}
+
+[data-ani="zoom-out-left"] {
+  transform: scale(1.2) translate3d(100px, 0, 0);
+}
+
+[data-ani^="flip"] {
+  backface-visibility: hidden;
+  transition-property: transform;
+}
+
+[data-ani="flip-right"] {
+  transform: perspective(2500px) rotateY(100deg);
+}
+[data-ani="flip-right"].min-ani-scroll {
+  transform: perspective(2500px) rotateY(0deg);
+}
+
+[data-ani="flip-left"] {
+  transform: perspective(2500px) rotateY(-100deg);
+}
+
+[data-ani="flip-left"].min-ani-scroll {
+  transform: perspective(2500px) rotateY(0deg);
+}
+
+[data-ani="flip-up"] {
+  transform: perspective(2500px) rotateX(-100deg);
+}
+
+[data-ani="flip-up"].min-ani-scroll {
+  transform: perspective(2500px) rotateX(0deg);
+}
+
+[data-ani="flip-down"] {
+  transform: perspective(2500px) rotateX(100deg);
+}
+
+[data-ani="flip-down"].min-ani-scroll {
+  transform: perspective(2500px) rotateX(0deg);
 }
