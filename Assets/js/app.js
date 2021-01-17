@@ -1,8 +1,4 @@
-const boxes = document.querySelectorAll(".box");
-const boxy = document.querySelector(".box");
-
-boxy.classList.add("ani");
-boxy.classList.remove();
+const boxes = document.querySelectorAll("[data-ani]");
 
 const options = {
   root: null,
@@ -13,13 +9,6 @@ const options = {
 function scrollELement(element, options) {
   const internalCallback = function (entries) {
     let observedElement = entries[0];
-
-    // if (observedElement.isIntersecting) {
-    //   element.classList.add("ani-scroll");
-    // } else {
-    //   element.classList.remove("ani-scroll");
-    // }
-
     observedElement.isIntersecting
       ? element.classList.add("min-ani-scroll")
       : element.classList.remove("min-ani-scroll");
@@ -29,9 +18,10 @@ function scrollELement(element, options) {
   observer.observe(element);
 }
 
-boxes.forEach((box) => {
-  scrollELement(box, options);
-});
+function watchElements(elements, options) {
+  elements.forEach((element) => {
+    scrollELement(element, options);
+  });
+}
 
-const title = document.getElementById("title");
-scrollELement(title, options);
+watchElements(boxes, options);
